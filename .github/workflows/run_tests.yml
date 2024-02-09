@@ -28,8 +28,17 @@ jobs:
             - name: Install Dependencies
               run: pip install -r requirements.txt
             - name: english_landing
-              if: "github.event.inputs.deployment_target == 'english_landing'"
-              run: pytest test_cases/test_english.py::test_open_website_english
+              if: "github.event.inputs.deployment_target == 'english_landing'" --alluredir=allure-results
+              run: pytest test_cases/test_english.py
             - name: spanish_landing
-              if: "github.event.inputs.deployment_target == 'spanish_landing'"
-              run: pytest test_cases/test_english.py::test_how_it_works_english_page
+              if: "github.event.inputs.deployment_target == 'spanish_landing'" --alluredir=allure-results
+              run: pytest test_cases/test_spanish.py
+            - name: arabic_landing
+              if: "github.event.inputs.deployment_target == 'arabic_landing'" --alluredir=allure-results
+              run: pytest test_cases/test_arabic.py
+            - name: chinese_landing
+              if: "github.event.inputs.deployment_target == 'chinese_landing'" --alluredir=allure-results
+              run: pytest test_cases/test_chinese.py
+            - name: french_landing
+              if: "github.event.inputs.deployment_target == 'french_landing'" --alluredir=allure-results
+              run: pytest test_cases/test_french.py
