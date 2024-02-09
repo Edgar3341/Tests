@@ -1,4 +1,4 @@
-Name: Landing Site Daily tests
+
 on:
     push
 jobs:
