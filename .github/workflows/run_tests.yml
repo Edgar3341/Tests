@@ -11,9 +11,16 @@ on:
         options:
           - english_landing
           - spanish_landing
-          - arabic_landing
-          - chinese_landing
-          - french_landing
+          - german_landing
+          - hindi_landing
+          - italian_landing
+          - korean_landing
+          - polish_landing
+          - portuguese_landing
+          - russian_landing
+          - turkish_landing
+          - ukrainian_landing
+          - all_landings
 
 jobs:
   test:
@@ -32,17 +39,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run Tests
         run: |
-          if [ "${{ github.event.inputs.deployment_target }}" == "english_landing" ]; then
-            pytest test_cases/test_english.py --alluredir=allure-results
-          elif [ "${{ github.event.inputs.deployment_target }}" == "spanish_landing" ]; then
-            pytest test_cases/test_spanish.py --alluredir=allure-results
-          elif [ "${{ github.event.inputs.deployment_target }}" == "arabic_landing" ]; then
-            pytest test_cases/test_arabic.py --alluredir=allure-results
-          elif [ "${{ github.event.inputs.deployment_target }}" == "chinese_landing" ]; then
-            pytest test_cases/test_chinese.py --alluredir=allure-results
-          elif [ "${{ github.event.inputs.deployment_target }}" == "french_landing" ]; then
-            pytest test_cases/test_french.py --alluredir=allure-results
+          if [ "${{ github.event.inputs.deployment_target }}" == "all_landings" ]; then
+            pytest test_cases/ --alluredir=allure-results
           else
-            echo "Unsupported deployment target"
-            exit 1
+            pytest "test_cases/test_${{ github.event.inputs.deployment_target }}.py" --alluredir=allure-results
           fi
