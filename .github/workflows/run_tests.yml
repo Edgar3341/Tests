@@ -8,8 +8,8 @@ on:
           default:
           type: choice
           options:
-            - English landing
-            - Spanish landing
+            - english_landing
+            - spanish_landing
 
 
 jobs:
