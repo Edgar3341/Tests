@@ -1,44 +1,45 @@
 name: Landing Site Testing
 
 on:
-    workflow_dispatch:
-      inputs:
-        deployment_target:
-          description: Choose target
-          required: true
-          default:
-          type: choice
-          options:
-            - english_landing
-            - spanish_landing
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default: english_landing
+        type: choice
+        options:
+          - english_landing
+          - spanish_landing
 
 jobs:
   test:
-        runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout repository
-              uses: actions/checkout@v3
-            - name: setup Python
-              uses: actions/setup-python@v4
-              with:
-                python-version: "3.10"
-            - name: Install Chrome
-              run: sudo apt-get install google-chrome-stable
-            - name: Install Dependencies
-              run: pip install -r requirements.txt
-            - name: english_landing
-              if: "github.event.inputs.deployment_target == 'english_landing'" --alluredir=allure-results
-              run: pytest test_cases/test_english.py
-            - name: spanish_landing
-              if: "github.event.inputs.deployment_target == 'spanish_landing'" --alluredir=allure-results
-              run: pytest test_cases/test_spanish.py
-            - name: arabic_landing
-              if: "github.event.inputs.deployment_target == 'arabic_landing'" --alluredir=allure-results
-              run: pytest test_cases/test_arabic.py
-            - name: chinese_landing
-              if: "github.event.inputs.deployment_target == 'chinese_landing'" --alluredir=allure-results
-              run: pytest test_cases/test_chinese.py
-            - name: french_landing
-              if: "github.event.inputs.deployment_target == 'french_landing'" --alluredir=allure-results
-              run: pytest test_cases/test_french.py
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Run Tests
+        run: |
+          if [ "${{ github.event.inputs.deployment_target }}" == "english_landing" ]; then
+            pytest test_cases/test_english.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "spanish_landing" ]; then
+            pytest test_cases/test_spanish.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "arabic_landing" ]; then
+            pytest test_cases/test_arabic.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "chinese_landing" ]; then
+            pytest test_cases/test_chinese.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "french_landing" ]; then
+            pytest test_cases/test_french.py --alluredir=allure-results
+          else
+            echo "Unsupported deployment target"
+            exit 1
+          fi
