@@ -11,6 +11,9 @@ on:
         options:
           - english_landing
           - spanish_landing
+          - arabic_landing
+          - chinese_landing
+          - french_landing
 
 jobs:
   test:
