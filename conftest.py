@@ -11,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 # Function to configure browser UI
 def configure_browser_ui():
     chrome_options = Options()
-    # chrome_options.add_argument('--headless')  # Consider adding other options if needed
+    chrome_options.add_argument('--headless')  # Consider adding other options if needed
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
