@@ -1,8 +1,19 @@
 
 on:
-    push
+    workflow_dispatch:
+      inputs:
+        deployment_target:
+          description: Choose target
+          required: true
+          default:
+          type: choice
+          options:
+            - English landing
+            - Spanish landing
+
+
 jobs:
-    test:
+  test:
         runs-on: ubuntu-latest
 
         steps:
@@ -16,5 +27,9 @@ jobs:
               run: sudo apt-get install google-chrome-stable
             - name: Install Dependencies
               run: pip install -r requirements.txt
-            - name: Run Tests
-              run: pytest
+            - name: english_landing
+              if: "github.event.inputs.deployment_target == 'english_landing"
+              run: pytest test_cases/test_english.py::test_open_website_english
+            - name: spanish_landing
+              if: "github.event.inputs.deployment_target == 'spanish_landing"
+              run: pytest test_cases/test_english.py::test_how_it_works_english_page
