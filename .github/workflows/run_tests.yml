@@ -116,7 +116,7 @@ jobs:
       - name: Store Generated report
         uses: actions/upload-artifact@v2
         with:
-          name: allure-report
+          name: _site
           path: _site
           retention-days: 3
 
@@ -126,19 +126,9 @@ jobs:
     name: Report publication
     steps:
       - name: Download Allure report
-        uses: actions/download-artifact@v2
-        with:
-          name: allure-report
-          path: allure-report
+        uses: actions/download-artifact@v3
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-report
-          path: allure-report
-          retention-days: 3
+        uses: actions/upload-pages-artifact@v2
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.LANDING }}
-          publish_dir: ./allure-report
+        uses: actions/deploy-pages@v1.2.9
