@@ -36,45 +36,47 @@ jobs:
     runs-on: ubuntu-latest
     name: Download History
     steps:
-      - name: setup Python
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
           python-version: "3.10"
-      - run: >
-          ARTIFACT_ID=$(curl -L 
-          -H "Accept: application/vnd.github+json" 
-          -H "X-GitHub-Api-Version: 2022-11-28" 
-          "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts?name=allure-results" 
-          | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
-          &&
-          curl -L 
-          -H "Accept: application/vnd.github+json" 
-          -H "Authorization: Bearer ${{ secrets.Landing }}" 
-          -H "X-GitHub-Api-Version: 2022-11-28" 
-          https://api.github.com/repos/Edgar3341/Tests/actions/artifacts/$ARTIFACT_ID/zip 
-          -o artifacts.zip &&
-          REPORT_ID=$(curl -L 
-          -H "Accept: application/vnd.github+json" 
-          -H "X-GitHub-Api-Version: 2022-11-28" 
-          "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts?name=github-pages" 
-          | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);") 
-          &&
-          curl -L 
-          -H "Accept: application/vnd.github+json" 
-          -H "Authorization: Bearer ${{ secrets.Landing }}" 
-          -H "X-GitHub-Api-Version: 2022-11-28" 
-          https://api.github.com/repos/Edgar3341/Tests/actions/artifacts/$REPORT_ID/zip 
-          -o artifacts.zip
-      - run: mkdir allure-results && unzip artifacts.zip -d allure-results
-      - run: mkdir old_pages pages_history && unzip pages.zip -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
-      - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
-      - name: Store allure history
-        uses: actions/upload-artifact@v3
+
+      - name: Get Artifact ID for allure-results
+        id: get_allure_artifact
+        run: |
+          ARTIFACT_ID=$(curl -sSfL \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts?name=allure-results" | \
+            jq -r '.artifacts[0].id')
+          echo "Artifact ID for allure-results: $ARTIFACT_ID"
+          echo "::set-output name=artifact_id::$ARTIFACT_ID"
+
+      - name: Download allure-results artifact
+        uses: actions/download-artifact@v2
         with:
           name: allure-results
-          path:
-            allure-results
-          retention-days: 3
+          path: allure-results
+          artifact_id: ${{ steps.get_allure_artifact.outputs.artifact_id }}
+
+      - name: Get Artifact ID for github-pages
+        id: get_pages_artifact
+        run: |
+          REPORT_ID=$(curl -sSfL \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts?name=github-pages" | \
+            jq -r '.artifacts[0].id')
+          echo "Artifact ID for github-pages: $REPORT_ID"
+          echo "::set-output name=report_id::$REPORT_ID"
+
+      - name: Download github-pages artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: github-pages
+          path: github-pages
+          artifact_id: ${{ steps.get_pages_artifact.outputs.report_id }}
+
 
   test:
     runs-on: ubuntu-latest
