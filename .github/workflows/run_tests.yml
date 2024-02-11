@@ -25,6 +25,11 @@ on:
           - ukrainian_landing
           - all_landings
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
