@@ -95,20 +95,15 @@ jobs:
           distribution: 'microsoft'
           java-version: '17'
       - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz && sudo tar -zxvf allure-2.27.0.tgz -C /opt/
-      - name:
-          Debug: List contents of /opt/allure-2.27.0/bin/
-        run: ls -l /opt/allure-2.27.0/bin/
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v3
-      - run: /opt/allure-2.27.0/bin/allure-generate -c allure-results -o _site
+      - run: allure-generate -c allure-results -o _site
       - name: Store Generated report
         uses: actions/download-artifact@v3
         with:
           name: _site
           path: _site
           retention-days: 3
-
-
 
   publish-report:
     runs-on: ubuntu-latest
