@@ -90,18 +90,28 @@ jobs:
     needs: test
     name: Generate report
     steps:
-      - uses: actions/setup-java@v3
+      - name: Setup Java
+        uses: actions/setup-java@v2
         with:
-          distribution: 'microsoft'
+          distribution: 'adopt'
           java-version: '17'
-      - run: sudo wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz && sudo tar -zxvf allure-2.27.0.tgz -C /opt/ && sudo ln -s /opt/allure-2.27.0/bin/allure /usr/bin/allure
-      - run: allure-generate -c allure-results -o _site
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
-      - name: Store Generated report
-        uses: actions/download-artifact@v3
+      - name: Download Allure CLI
+        run: |
+          sudo apt-get install wget
+          wget https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.tgz
+          sudo tar -zxvf allure-2.27.0.tgz -C /opt/
+          sudo ln -s /opt/allure-2.27.0/bin/allure /usr/bin/allure
+      - name: Download Allure results
+        uses: actions/download-artifact@v2
         with:
-          name: _site
+          name: allure-results
+          path: allure-results
+      - name: Generate Allure report
+        run: allure generate allure-results -o _site --clean
+      - name: Store Generated report
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-report
           path: _site
           retention-days: 3
 
