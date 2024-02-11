@@ -11,6 +11,9 @@ on:
         options:
           - english_landing
           - spanish_landing
+          - arabic_landing
+          - chinese_landing
+          - french_landing
           - german_landing
           - hindi_landing
           - italian_landing
@@ -39,8 +42,70 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run Tests
         run: |
-          if [ "${{ github.event.inputs.deployment_target }}" == "all_landings" ]; then
-            pytest test_cases/ --alluredir=allure-results
+          if [ "${{ github.event.inputs.deployment_target }}" == "english_landing" ]; then
+            pytest test_cases/test_english.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "spanish_landing" ]; then
+            pytest test_cases/test_spanish.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "arabic_landing" ]; then
+            pytest test_cases/test_arabic.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "chinese_landing" ]; then
+            pytest test_cases/test_chinese.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "french_landing" ]; then
+            pytest test_cases/test_french.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "german_landing" ]; then
+            pytest test_cases/test_german.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "hindi_landing" ]; then
+            pytest test_cases/test_hindi.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "italian_landing" ]; then
+            pytest test_cases/test_italian.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "korean_landing" ]; then
+            pytest test_cases/test_korean.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "polish_landing" ]; then
+            pytest test_cases/test_polish.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "portuguese_landing" ]; then
+            pytest test_cases/test_portuguese.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "russian_landing" ]; then
+            pytest test_cases/test_russian.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "turkish_landing" ]; then
+            pytest test_cases/test_turkish.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "ukrainian_landing" ]; then
+            pytest test_cases/test_ukrainian.py --alluredir=allure-results
+          elif [ "${{ github.event.inputs.deployment_target }}" == "all_landings" ]; then
+            pytest -v --alluredir=allure-results
           else
-            pytest "test_cases/test_${{ github.event.inputs.deployment_target }}.py" --alluredir=allure-results
-          fi
+            echo "Unsupported deployment target"
+            exit 1
+      - name: Store Allure results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path:
+            allure-results
+          retention-days: 3
+
+
+  generate-report:
+   runs-on: ubuntu-latest
+   needs: test
+   name: Generate report
+   steps:
+     - uses: actions/setup-jave@v3
+       with:
+         distribution: 'microsoft'
+         java-version: '17'
+     - run: sudo wget https://github.com/allure-framework/allure2/releases/download2.22.4/allure-2.23.1.tgz && sudo tar -zxvf allure-2.23.1.tgz -C /opt/ && sudo ln -s /opt/allure-2.23.1 /bin/allure /usr/bin/allure
+     - name: Download all workflow run artifacts
+       uses: actions/download-artifact@v3
+     - run: allure-generate -c allure-results -o _site
+  publish-report:
+    runs-on: ubunty-latest
+    needs: generate report
+    name: Report publication
+    steps:
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to Github pages
+        id: deployment
+        uses: actions/deploy-pages@v1.2.9
