@@ -126,7 +126,7 @@ jobs:
     name: Report publication
     steps:
       - name: Download Allure report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: allure-report
           path: allure-report
@@ -138,4 +138,7 @@ jobs:
           retention-days: 3
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1.2.9
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
