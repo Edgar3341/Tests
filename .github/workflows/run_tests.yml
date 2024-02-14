@@ -56,12 +56,21 @@ jobs:
           "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts/$ARTIFACT_ID/zip" -o /home/runner/work/Tests/Tests/artifacts.zip 
           && 
           echo "Current directory after downloading: $(pwd)"
-      - run: >
+      - run: |
           mkdir allure-results && unzip -l /home/runner/work/Tests/Tests/artifacts.zip -d allure-results
           if [ $? -ne 0 ]; then
             echo "Error: Unable to unzip artifacts.zip"
             exit 1
           fi
+        shell: /usr/bin/bash -e {0}
+        env:
+          pythonLocation: /opt/hostedtoolcache/Python/3.10.13/x64
+          PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.10.13/x64/lib/pkgconfig
+          Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.13/x64
+          Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.13/x64
+          Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.10.13/x64
+          LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.10.13/x64/lib
+
       - name: Store allure history
         uses: actions/upload-artifact@v3
         with:
