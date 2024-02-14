@@ -59,7 +59,7 @@ jobs:
           -H "X-GitHub-Api-Version: 2022-11-28" 
           "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts?name=github-pages" 
           | python -c "import sys, json; print(json.load(sys.stdin)['artifacts'][0]['id']);")
-      - run: mkdir allure-results && unzip artifacts -d allure-results
+      - run: mkdir allure-results && jar xvf artifacts -d allure-results
       - run: mkdir old_pages pages_history && unzip artifacts -d old_pages && tar -xvf old_pages/artifact.tar -C pages_history
       - run: cp pages_history/history/* allure-results && cp -r pages_history/history allure-results
       - name: Store allure history
