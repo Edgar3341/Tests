@@ -56,7 +56,12 @@ jobs:
           "https://api.github.com/repos/Edgar3341/Tests/actions/artifacts/$ARTIFACT_ID/zip" -o artifacts.zip 
           && 
           echo "Current directory after downloading: $(pwd)"
-      - run: mkdir allure-results && unzip artifacts.zip -d allure-results
+      - run: >
+          mkdir allure-results && unzip -l /home/runner/work/Tests/Tests/artifacts.zip -d allure-results
+          if [ $? -ne 0 ]; then
+            echo "Error Unable to unzip artifacts.zip"
+            exit 1
+          fi
       - name: Store allure history
         uses: actions/upload-artifact@v3
         with:
