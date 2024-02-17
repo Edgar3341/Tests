@@ -136,3 +136,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1.2.9
+      - name: Send Notification
+        run: |
+          curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' \--header 'Content-Type: application/json' \--data '{"text": ":white_check_mark: Landing website Tests were successful. Attached Allure Report :eyes: https://edgar3341.github.io/Tests/#"}'
