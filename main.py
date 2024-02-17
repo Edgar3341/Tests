@@ -118,7 +118,7 @@ class EnglishLanding(BasePage):
             # Switch to the new window
             self.driver.switch_to.window(window_handles[-1])
             text_two = self.element_is_visible(self.locators.SCHOOLS_QUOTE_FORMULARIO_EN)
-            expected_text = "School Quote"
+            expected_text = "School Quote 01 "
             assert text_two.text == expected_text
             self.driver.close()
             self.driver.switch_to.window(window_handles[0])
