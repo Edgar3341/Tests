@@ -155,35 +155,35 @@ jobs:
         uses: actions/deploy-pages@v1.2.9
       - name: Success
         if: |
-          needs.test.outputs.english_landing != 'failure' 
+          needs.test.outputs.english_landing == 'success'  
           && 
-          needs.test.outputs.spanish_landing != 'failure' 
+          needs.test.outputs.spanish_landing == 'success' 
           && 
-          needs.test.outputs.arabic_landing != 'failure' 
+          needs.test.outputs.arabic_landing == 'success' 
           && 
-          needs.test.outputs.chinese_landing != 'failure'
+          needs.test.outputs.chinese_landing == 'success' 
           && 
-          needs.test.outputs.french_landing != 'failure'
+          needs.test.outputs.french_landing == 'success' 
           && 
-          needs.test.outputs.german_landing != 'failure'
+          needs.test.outputs.german_landing == 'success' 
           && 
-          needs.test.outputs.hindi_landing != 'failure'
+          needs.test.outputs.hindi_landing == 'success' 
           && 
-          needs.test.outputs.italian_landing != 'failure'
+          needs.test.outputs.italian_landing == 'success' '
           && 
-          needs.test.outputs.korean_landing != 'failure'
+          needs.test.outputs.korean_landing == 'success' 
           && 
-          needs.test.outputs.polish_landing != 'failure'
+          needs.test.outputs.polish_landing == 'success' 
           && 
-          needs.test.outputs.portuguese_landing != 'failure'
+          needs.test.outputs.portuguese_landing == 'success' 
           && 
-          needs.test.outputs.russian_landing != 'failure'
+          needs.test.outputs.russian_landing == 'success' 
           && 
-          needs.test.outputs.turkish_landing != 'failure'
+          needs.test.outputs.turkish_landing == 'success' 
           && 
-          needs.test.outputs.ukrainian_landing != 'failure'
+          needs.test.outputs.ukrainian_landing == 'success'
           && 
-          needs.test.outputs.all_landings != 'failure'
+          needs.test.outputs.all_landings == 'success'
         run: |
           curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' \--header 'Content-Type: application/json' \--data '{"text": ":white_check_mark: Landing website Tests were successful. Attached Allure Report :eyes: https://edgar3341.github.io/Tests/#"}'
       - name: Failure
