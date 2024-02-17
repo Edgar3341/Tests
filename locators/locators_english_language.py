@@ -87,6 +87,10 @@ class PageLocators:
     SCHOOLS_IMAGE_EN = (By.XPATH, "//div[@class='servicesBlock']//img[@src='assets/pictures/customers.jpg']")
 
 
+    # HOMESCHOOLERS
+    HOMESCHOOLERS_TITLE_EN = (By.XPATH, "//h1[contains(text(),'Homeschoolers')]")
+    HOMESCHOOLERS_IMAGE = (By.XPATH, "//img[@title='Flying Dino']")\
+
 
 
 

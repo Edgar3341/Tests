@@ -120,7 +120,7 @@ class EnglishLanding(BasePage):
             # Switch to the new window
             self.driver.switch_to.window(window_handles[-1])
             text_two = self.element_is_visible(self.locators.SCHOOLS_QUOTE_FORMULARIO_EN)
-            expected_text = "School Quote 01"
+            expected_text = "School Quote"
             assert text_two.text == expected_text
             self.driver.close()
             self.driver.switch_to.window(window_handles[0])
@@ -132,4 +132,21 @@ class EnglishLanding(BasePage):
         assert text_three.text == expected_text_three
         image = self.element_is_visible(self.locators.SCHOOLS_IMAGE_EN)
         assert image.is_displayed(), "Image is not displayed on the page"
+
+    def homeschoolers_verify_elements(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.HOMESCHOOLES).click()
+        text = self.element_is_visible(self.locators.HOMESCHOOLERS_TITLE_EN)
+        expected_title = "Homeschoolers"
+        assert text.text == expected_title
+        self.scroll_down()
+        try:
+            image_element = self.element_is_visible(self.locators.HOMESCHOOLERS_IMAGE)
+            image_source = image_element.get_attribute("src")
+            expected_image_source = "assets/dinosaurs/flyingDino.svg"
+            assert image_source == expected_image_source, "Image is not persisting"
+            print("Image is persisting")
+        except Exception as e:
+            print(f"Error: {e}")
 

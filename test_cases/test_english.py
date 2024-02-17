@@ -45,3 +45,9 @@ def test_schools(driver):
     schools = EnglishLanding(driver, "https://dinolingo.com/")
     schools.open()
     schools.schools_verify_elements()
+
+@allure.title("Homeschoolers. All elements verifying / Check Image Persisting")
+def test_homeschoolers(driver):
+    homeschoolers = EnglishLanding(driver, "https://dinolingo.com/")
+    homeschoolers.open()
+    homeschoolers.homeschoolers_verify_elements()
