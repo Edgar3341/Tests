@@ -48,6 +48,8 @@ class EnglishLanding(BasePage):
         text = self.element_is_visible(self.locators.CUSTOMER_REVIEWS_TITLE_EN)
         expected_title = "Customer Reviews"
         assert text.text == expected_title
+        self.scroll_down()
+        self.scroll_down()
         self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK).click()
         time.sleep(2)
         self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK).click()
@@ -118,7 +120,7 @@ class EnglishLanding(BasePage):
             # Switch to the new window
             self.driver.switch_to.window(window_handles[-1])
             text_two = self.element_is_visible(self.locators.SCHOOLS_QUOTE_FORMULARIO_EN)
-            expected_text = "School Quote"
+            expected_text = "School Quote 01"
             assert text_two.text == expected_text
             self.driver.close()
             self.driver.switch_to.window(window_handles[0])

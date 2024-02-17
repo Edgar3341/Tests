@@ -35,6 +35,23 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
+    outputs:
+      options:
+        english_landing: ${{ steps.english_landing.outcome }}
+        spanish_landing: ${{ steps.spanish_landing.outcome }}
+        arabic_landing: ${{ steps.arabic_landing.outcome }}
+        chinese_landing: ${{ steps.chinese_landing.outcome }}
+        french_landing: ${{ steps.french_landing.outcome }}
+        german_landing: ${{ steps.german_landing.outcome }}
+        hindi_landing: ${{ steps.hindi_landing.outcome }}
+        italian_landing: ${{ steps.italian_landing.outcome }}
+        korean_landing: ${{ steps.korean_landing.outcome }}
+        polish_landing: ${{ steps.polish_landing.outcome }}
+        portuguese_landing: ${{ steps.portuguese_landing.outcome }}
+        russian_landing: ${{ steps.russian_landing.outcome }}
+        turkish_landing: ${{ steps.turkish_landing.outcome }}
+        ukrainian_landing: ${{ steps.ukrainian_landing.outcome }}
+        all_landings: ${{ steps.all_landing.outcome }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -136,6 +153,69 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1.2.9
-      - name: Send Notification
+      - name: Success
+        if: |
+          needs.test.outputs.english_landing != 'failure' 
+          && 
+          needs.test.outputs.spanish_landing != 'failure' 
+          && 
+          needs.test.outputs.arabic_landing != 'failure' 
+          && 
+          needs.test.outputs.chinese_landing != 'failure'
+          && 
+          needs.test.outputs.french_landing != 'failure'
+          && 
+          needs.test.outputs.german_landing != 'failure'
+          && 
+          needs.test.outputs.hindi_landing != 'failure'
+          && 
+          needs.test.outputs.italian_landing != 'failure'
+          && 
+          needs.test.outputs.korean_landing != 'failure'
+          && 
+          needs.test.outputs.polish_landing != 'failure'
+          && 
+          needs.test.outputs.portuguese_landing != 'failure'
+          && 
+          needs.test.outputs.russian_landing != 'failure'
+          && 
+          needs.test.outputs.turkish_landing != 'failure'
+          && 
+          needs.test.outputs.ukrainian_landing != 'failure'
+          && 
+          needs.test.outputs.all_landings != 'failure'
         run: |
           curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' \--header 'Content-Type: application/json' \--data '{"text": ":white_check_mark: Landing website Tests were successful. Attached Allure Report :eyes: https://edgar3341.github.io/Tests/#"}'
+      - name: Failure
+        if: |
+          needs.test.outputs.english_landing == 'failure' 
+          && 
+          needs.test.outputs.spanish_landing == 'failure' 
+          && 
+          needs.test.outputs.arabic_landing == 'failure' 
+          && 
+          needs.test.outputs.chinese_landing == 'failure'
+          && 
+          needs.test.outputs.french_landing == 'failure'
+          && 
+          needs.test.outputs.german_landing == 'failure'
+          && 
+          needs.test.outputs.hindi_landing == 'failure'
+          && 
+          needs.test.outputs.italian_landing == 'failure'
+          && 
+          needs.test.outputs.korean_landing == 'failure'
+          && 
+          needs.test.outputs.polish_landing == 'failure'
+          && 
+          needs.test.outputs.portuguese_landing == 'failure'
+          && 
+          needs.test.outputs.russian_landing == 'failure'
+          && 
+          needs.test.outputs.turkish_landing == 'failure'
+          && 
+          needs.test.outputs.ukrainian_landing == 'failure'
+          && 
+          needs.test.outputs.all_landings == 'failure'
+        run: |
+          curl --location 'https://hooks.slack.com/services/${{ secrets.st_slack }}' \--header 'Content-Type: application/json' \--data '{"text": "::x: Landing website: Some tests are not successful. Attached Allure Report :eyes: https://edgar3341.github.io/Tests/#"}'
