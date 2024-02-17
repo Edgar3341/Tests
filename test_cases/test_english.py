@@ -20,3 +20,28 @@ def test_customer_reviews_english_page(driver):
     reviews = EnglishLanding(driver, "https://dinolingo.com/")
     reviews.open()
     reviews.customer_reviews_verify_elements()
+
+@allure.title("Language Courses English page. All elements verifying")
+def test_language_courses(driver):
+    language = EnglishLanding(driver, "https://dinolingo.com/")
+    language.open()
+    language.language_courses_verify_elements()
+
+
+@allure.title("Curriculum page. All elements verifying / Create Account")
+def test_curriculum_en(driver):
+    curriculum = EnglishLanding(driver, "https://dinolingo.com/")
+    curriculum.open()
+    curriculum.curriculum_verify_elements()
+
+@allure.title("Parents Guide. All elements verifying / Other Questions")
+def test_parents_guide(driver):
+    parents = EnglishLanding(driver, "https://dinolingo.com/")
+    parents.open()
+    parents.parents_guide_verify_elements()
+
+@allure.title("Schools. All elements verifying / Get a Quite funcionality")
+def test_schools(driver):
+    schools = EnglishLanding(driver, "https://dinolingo.com/")
+    schools.open()
+    schools.schools_verify_elements()

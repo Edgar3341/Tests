@@ -45,7 +45,7 @@ class EnglishLanding(BasePage):
         self.scroll_down()
         self.scroll_down()
         self.element_is_visible(self.locators.CUSTOMER_REVIEWS).click()
-        text = self.element_is_visible(self.locators.CUSTOMER_REVIEWS_TITLE)
+        text = self.element_is_visible(self.locators.CUSTOMER_REVIEWS_TITLE_EN)
         expected_title = "Customer Reviews"
         assert text.text == expected_title
         self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK).click()
@@ -58,5 +58,73 @@ class EnglishLanding(BasePage):
         else:
             print("Video is not in full screen mode.")
 
+    def language_courses_verify_elements(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.LANGUAGE_COURSES).click()
+        text = self.element_is_visible(self.locators.LANGUAGE_COURSES_TITLE_EN)
+        expected_title = "50 languages & 30,000+ online learning activities"
+        assert text.text == expected_title
+        self.scroll_down()
+        text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_EN)
+        expected_title_three = "You rated this page for 5 stars"
+        assert text_three.text == expected_title_three
 
+
+    def curriculum_verify_elements(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.CURRICULUM).click()
+        text = self.element_is_visible(self.locators.CURRICULUM_HEADER_TEXT_EN)
+        expected_title = "Dinolingo Lesson Plan & Curriculum"
+        assert text.text == expected_title
+        self.back()
+        self.scroll_down()
+        text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_EN)
+        expected_title_three = "You rated this page for 5 stars"
+        assert text_three.text == expected_title_three
+
+
+    def parents_guide_verify_elements(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.PARENTS_GUIDE).click()
+        text = self.element_is_visible(self.locators.PARENTS_GUIDE_TITLE_EN)
+        expected_title = "Tips for parents"
+        assert text.text == expected_title
+        text_two = self.element_is_visible(self.locators.PARENTS_GUIDE_TEXT_EN)
+        expected_text = "Consistency is the key. It is important to remember to login and practice once a day."
+        assert text_two.text == expected_text
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.PARENTS_GUIDE_OTHER_QUESTIONS_EN).click()
+        text_three = self.element_is_visible(self.locators.PARENTS_GUIDE_OTHER_QUESTIONS_ANSWER_EN)
+        expected_text_three = "There is convincing evidence, which suggests that children who learn a second language at an early age have a greater chance of succeeding with reading, vocabulary, and writing, throughout their academic and professional career. In addition, such children are more likely to develop healthier critical thinking and social skills, both significant advantages in life. Studies also show, bilingual students, including adult students, often achieve higher scores on standardized tests and college entrance exams. According to the 'American Council on the Teaching of Foreign Languages', ACTFL, learning a second language has a greater advantage for children both in the near and distant future, enabling them to easily interact with multinationals. This will be a definite competitive edge in the global business arena later in life. Please feel free to check out our blog for additional scientific resources on this topic."
+        assert text_three.text == expected_text_three
+
+    def schools_verify_elements(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.SCHOOLS).click()
+        text = self.element_is_visible(self.locators.SCHOOLS_TITLE_EN)
+        expected_title = "Dinolingo for Schools"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.SCHOOLS_GET_A_QUOTE_EN).click()
+        window_handles = self.driver.window_handles
+        if len(window_handles) > 1:
+            # Switch to the new window
+            self.driver.switch_to.window(window_handles[-1])
+            text_two = self.element_is_visible(self.locators.SCHOOLS_QUOTE_FORMULARIO_EN)
+            expected_text = "School Quote"
+            assert text_two.text == expected_text
+            self.driver.close()
+            self.driver.switch_to.window(window_handles[0])
+        else:
+            print("The School Quote window not open")
+        self.scroll_down()
+        text_three = self.element_is_visible(self.locators.SCHOOLS_QUOTE_SCHOOLS_TEXT_EN)
+        expected_text_three = "We work with public schools, charter schools, language schools, private schools, language tutors, governments, and institutions."
+        assert text_three.text == expected_text_three
+        image = self.element_is_visible(self.locators.SCHOOLS_IMAGE_EN)
+        assert image.is_displayed(), "Image is not displayed on the page"
 
