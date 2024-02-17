@@ -37,21 +37,21 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       options:
-        english_landing: ${{ steps.english_landing.outcome }}
-        spanish_landing: ${{ steps.spanish_landing.outcome }}
-        arabic_landing: ${{ steps.arabic_landing.outcome }}
-        chinese_landing: ${{ steps.chinese_landing.outcome }}
-        french_landing: ${{ steps.french_landing.outcome }}
-        german_landing: ${{ steps.german_landing.outcome }}
-        hindi_landing: ${{ steps.hindi_landing.outcome }}
-        italian_landing: ${{ steps.italian_landing.outcome }}
-        korean_landing: ${{ steps.korean_landing.outcome }}
-        polish_landing: ${{ steps.polish_landing.outcome }}
-        portuguese_landing: ${{ steps.portuguese_landing.outcome }}
-        russian_landing: ${{ steps.russian_landing.outcome }}
-        turkish_landing: ${{ steps.turkish_landing.outcome }}
-        ukrainian_landing: ${{ steps.ukrainian_landing.outcome }}
-        all_landings: ${{ steps.all_landing.outcome }}
+      english_landing: ${{ steps.english_landing.outcome }}
+      spanish_landing: ${{ steps.spanish_landing.outcome }}
+      arabic_landing: ${{ steps.arabic_landing.outcome }}
+      chinese_landing: ${{ steps.chinese_landing.outcome }}
+      french_landing: ${{ steps.french_landing.outcome }}
+      german_landing: ${{ steps.german_landing.outcome }}
+      hindi_landing: ${{ steps.hindi_landing.outcome }}
+      italian_landing: ${{ steps.italian_landing.outcome }}
+      korean_landing: ${{ steps.korean_landing.outcome }}
+      polish_landing: ${{ steps.polish_landing.outcome }}
+      portuguese_landing: ${{ steps.portuguese_landing.outcome }}
+      russian_landing: ${{ steps.russian_landing.outcome }}
+      turkish_landing: ${{ steps.turkish_landing.outcome }}
+      ukrainian_landing: ${{ steps.ukrainian_landing.outcome }}
+      all_landings: ${{ steps.all_landing.outcome }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
