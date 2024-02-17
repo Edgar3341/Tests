@@ -68,7 +68,7 @@ class EnglishLanding(BasePage):
         self.scroll_down()
         time.sleep(3)
         text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_EN)
-        expected_title_three = "You rated this page for 5 stars"
+        expected_title_three = "Please rate this page"
         assert text_three.text == expected_title_three
 
 
@@ -83,7 +83,7 @@ class EnglishLanding(BasePage):
         self.scroll_down()
         time.sleep(3)
         text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_EN)
-        expected_title_three = "You rated this page for 5 stars"
+        expected_title_three = "Please rate this page"
         assert text_three.text == expected_title_three
 
 

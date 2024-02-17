@@ -67,7 +67,7 @@ class PageLocators:
 
     # LANGUAGE COURSES
     LANGUAGE_COURSES_TITLE_EN = (By.XPATH, "//h1[contains(text(),'50 languages & 30,000+ online learning activities')]")
-    LANGUAGE_COURSES_RATE_THIS_PAGE_EN = (By.XPATH, "//div[contains(text(),'5 stars')]")
+    LANGUAGE_COURSES_RATE_THIS_PAGE_EN = (By.XPATH, "//div[contains(text(),'Please rate this page')]")
 
     # CURRICULUM
     CURRICULUM_HEADER_TEXT_EN = (By.XPATH, "//h2[contains(text(),'Dinolingo Lesson Plan & Curriculum')]")
