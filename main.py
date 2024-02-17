@@ -140,7 +140,6 @@ class EnglishLanding(BasePage):
         text = self.element_is_visible(self.locators.HOMESCHOOLERS_TITLE_EN)
         expected_title = "Homeschoolers"
         assert text.text == expected_title
-        self.scroll_down()
         try:
             image_element = self.element_is_visible(self.locators.HOMESCHOOLERS_IMAGE)
             image_source = image_element.get_attribute("src")
