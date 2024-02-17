@@ -169,7 +169,7 @@ jobs:
           && 
           needs.test.outputs.hindi_landing == 'success' 
           && 
-          needs.test.outputs.italian_landing == 'success' '
+          needs.test.outputs.italian_landing == 'success'
           && 
           needs.test.outputs.korean_landing == 'success' 
           && 
