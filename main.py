@@ -66,6 +66,7 @@ class EnglishLanding(BasePage):
         expected_title = "50 languages & 30,000+ online learning activities"
         assert text.text == expected_title
         self.scroll_down()
+        time.sleep(3)
         text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_EN)
         expected_title_three = "You rated this page for 5 stars"
         assert text_three.text == expected_title_three
@@ -80,6 +81,7 @@ class EnglishLanding(BasePage):
         assert text.text == expected_title
         self.back()
         self.scroll_down()
+        time.sleep(3)
         text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_EN)
         expected_title_three = "You rated this page for 5 stars"
         assert text_three.text == expected_title_three
@@ -98,6 +100,7 @@ class EnglishLanding(BasePage):
         self.scroll_down()
         self.scroll_down()
         self.element_is_visible(self.locators.PARENTS_GUIDE_OTHER_QUESTIONS_EN).click()
+        time.sleep(2)
         text_three = self.element_is_visible(self.locators.PARENTS_GUIDE_OTHER_QUESTIONS_ANSWER_EN)
         expected_text_three = "There is convincing evidence, which suggests that children who learn a second language at an early age have a greater chance of succeeding with reading, vocabulary, and writing, throughout their academic and professional career. In addition, such children are more likely to develop healthier critical thinking and social skills, both significant advantages in life. Studies also show, bilingual students, including adult students, often achieve higher scores on standardized tests and college entrance exams. According to the 'American Council on the Teaching of Foreign Languages', ACTFL, learning a second language has a greater advantage for children both in the near and distant future, enabling them to easily interact with multinationals. This will be a definite competitive edge in the global business arena later in life. Please feel free to check out our blog for additional scientific resources on this topic."
         assert text_three.text == expected_text_three
