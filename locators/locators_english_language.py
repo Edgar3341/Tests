@@ -26,6 +26,7 @@ class PageLocators:
     ENGLISH_FOR_KIDS = (By.XPATH, "//a[contains(text(),'English for kids')]")
     ITALIAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Italian for kids')]")
     GERMAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'German for kids')]")
+    JAPANESE_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Japanese for kids')]")
     PORTUGUESE_EU_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Portuguese (EU) for kids')]")
     PORTUGUESE_BR_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Portuguese (BR) for kids')]")
     RUSSIAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Russian for kids')]")
@@ -41,9 +42,9 @@ class PageLocators:
     UKRAINIAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Ukrainian for kids')]")
     LATIN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Latin for kids')]")
     KOREAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Korean for kids')]")
-    HINDI_FOR_KIDS = (By.XPATH, "//a[contains(text(),'HINDI for kids')]")
+    HINDI_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Hindi for kids')]")
     PERSIAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Persian for kids')]")
-    CROATIAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'CROATIAN for kids')]")
+    CROATIAN_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Croatian for kids')]")
     TURKISH_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Turkish for kids')]")
     SEE_ALL_50_LANGUAGES = (By.XPATH, "//a[contains(text(),'See all 50 languages')]")
 
@@ -71,7 +72,7 @@ class PageLocators:
 
     # CURRICULUM
     CURRICULUM_HEADER_TEXT_EN = (By.XPATH, "//h2[contains(text(),'Dinolingo Lesson Plan & Curriculum')]")
-    CURRICULUM_CREATE_ACCOUNT_EN = (By.XPATH, "//body/app-root[1]/ng-component[1]/ng-component[1]/div[1]/section[1]/article[1]/div[1]/div[1]/button[1]/a[1]")
+    CURRICULUM__ACCOUNT_EN = (By.XPATH, "//body/app-root[1]/ng-component[1]/ng-component[1]/div[1]/section[1]/article[1]/div[1]/div[1]/button[1]/a[1]")
 
     # PARENTS GUIDE
     PARENTS_GUIDE_TITLE_EN = (By.XPATH, "//h1[contains(text(),'Tips for parents')]")
@@ -90,6 +91,19 @@ class PageLocators:
     # HOMESCHOOLERS
     HOMESCHOOLERS_TITLE_EN = (By.XPATH, "//h1[contains(text(),'Homeschoolers')]")
     HOMESCHOOLERS_IMAGE = (By.XPATH, "//img[@title='Flying Dino']")\
+
+    # PRIVACY POLICY
+    NEW_PAGE_HEADER = (By.XPATH, "//h1[@class='title']")
+
+    # CONTACT_US PAGE
+    CONTACT_US_HEADER = (By.XPATH, "//h1[contains(text(),'Dinolingo Help and Support')]")
+
+    # ABOUT DINOLINGO
+    ABOUT_US_TITLE_EN = (By.XPATH, "//h1[contains(text(),'about Dinol//h1[@class='white baloo2']ingo')]")
+
+    # ALL COURSES
+    LANGUAGE_HEADERS_EN = (By.XPATH, "//h1[@class='white baloo2']")
+    VIDEO_PLAY = (By.XPATH, "//body/app-root[1]/ng-component[1]/ng-component[1]/div[1]/section[5]/article[1]/video[1]")
 
 
 
