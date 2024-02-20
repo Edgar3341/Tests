@@ -16,7 +16,7 @@ class EnglishLanding(BasePage):
         expected = "#1 Language Learning Website and App for Kids"
         assert text.text == expected
 
-        text_two = self.element_is_visible(self.locators.BEST_METHODS_TO_EACH_CHILDREN)
+        text_two = self.element_is_visible(self.locators.BEST_METHODS_TO_EACH_CHILDREN_EN)
         expected_two = "Best 10 methods to teach children a second language"
         assert text_two.text == expected_two
 
@@ -37,10 +37,10 @@ class EnglishLanding(BasePage):
         text = self.element_is_visible(self.locators.HOW_IT_WORKS_TITLE)
         expected_title = "How it works"
         assert text.text == expected_title
-        text_two = self.element_is_visible(self.locators.PROGRESS_REPORTS)
+        text_two = self.element_is_visible(self.locators.PROGRESS_REPORTS_EN)
         expected_message = "Each child account includes several progress reports such as time, activity, test and daily report."
         assert text_two.text == expected_message
-        text_combination = self.element_is_visible(self.locators.RECENT_COMBINATION)
+        text_combination = self.element_is_visible(self.locators.RECENT_COMBINATION_ES)
         expected_message_two = "Recent studies have shown that children prefer to watch animations over real-life footage. Designed to capture your child’s attention, 80% of DinoLingo videos are presented as either 3D or 2D animations."
         assert text_combination.text == expected_message_two
         print("How it works page works good")
@@ -49,14 +49,14 @@ class EnglishLanding(BasePage):
         self.scroll_down()
         self.scroll_down()
         self.element_is_visible(self.locators.CUSTOMER_REVIEWS).click()
-        text = self.element_is_visible(self.locators.CUSTOMER_REVIEWS_TITLE_EN)
+        text = self.element_is_visible(self.locators.CUSTOMER_REVIEWS_TITLE)
         expected_title = "Customer Reviews"
         assert text.text == expected_title
         self.scroll_down()
         self.scroll_down()
-        self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK).click()
+        self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK_EN).click()
         time.sleep(2)
-        self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK).click()
+        self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK_EN).click()
         time.sleep(2)
         if self.driver.get_window_rect()['width'] == self.driver.execute_script('return window.screen.width') and \
                 self.driver.get_window_rect()['height'] == self.driver.execute_script('return window.screen.height'):
@@ -157,7 +157,7 @@ class EnglishLanding(BasePage):
     def privacy_verify_redirect(self):
         self.scroll_down()
         self.scroll_down()
-        self.element_is_visible(self.locators.PRIVACY).click()
+        self.element_is_visible(self.locators.PRIVACY_EN).click()
         window_handles = self.driver.window_handles
         if len(window_handles) > 1:
             # Switch to the new window
@@ -171,7 +171,7 @@ class EnglishLanding(BasePage):
     def terms_verify_redirect(self):
         self.scroll_down()
         self.scroll_down()
-        self.element_is_visible(self.locators.TERMS).click()
+        self.element_is_visible(self.locators.TERMS_EN).click()
         window_handles = self.driver.window_handles
         if len(window_handles) > 1:
             # Switch to the new window
@@ -185,7 +185,7 @@ class EnglishLanding(BasePage):
     def contact_us_verify_redirect(self):
         self.scroll_down()
         self.scroll_down()
-        self.element_is_visible(self.locators.CONTACT_US).click()
+        self.element_is_visible(self.locators.CONTACT_US_EN).click()
         window_handles = self.driver.window_handles
         if len(window_handles) > 1:
             # Switch to the new window
@@ -200,14 +200,14 @@ class EnglishLanding(BasePage):
         self.scroll_down()
         self.scroll_down()
         self.element_is_visible(self.locators.ABOUT_US).click()
-        text = self.element_is_visible(self.locators.ABOUT_US_TITLE_EN)
+        text = self.element_is_visible(self.locators.LANGUAGE_HEADERS_EN)
         expected_title = "about Dinolingo"
         assert text.text == expected_title
 
     def help_and_support_verify_redirect(self):
         self.scroll_down()
         self.scroll_down()
-        self.element_is_visible(self.locators.HELP_AND_SUPPORT).click()
+        self.element_is_visible(self.locators.HELP_AND_SUPPORT_EN).click()
         window_handles = self.driver.window_handles
         if len(window_handles) > 1:
             # Switch to the new window
@@ -642,4 +642,554 @@ class EnglishLanding(BasePage):
         self.element_is_visible(self.locators.SEE_ALL_50_LANGUAGES).click()
         text = self.element_is_visible(self.locators.LANGUAGE_HEADERS_EN)
         expected_title = "50 languages & 30,000+ online learning activities"
+        assert text.text == expected_title
+
+
+class SpanishLanding(BasePage):
+    locators = PageLocators()
+
+
+    def verify_elements_on_homepage_es(self):
+        self.element_is_visible(self.locators.HOMEPAGE_LANGUAGE).click()
+        self.element_is_visible(self.locators.HOMEPAGE_LANGUAGE_SPANISH).click()
+        text = self.element_is_visible(self.locators.MAIN_TEXT)
+        expected = "Sitio Web y Aplicación #1 de Aprendizaje de Idiomas para Niños"
+        assert text.text == expected
+
+        text_two = self.element_is_visible(self.locators.BEST_METHODS_TO_EACH_CHILDREN_ES)
+        expected_two = "Los mejores 10 métodos para enseñar un segundo idioma a niños"
+        assert text_two.text == expected_two
+        try:
+            image_element = self.element_is_visible(self.locators.HOMEPAGE_IMAGE)
+            if image_element.is_displayed():
+                print("Image is presented on the website.")
+            else:
+                print("Image is not displayed on the website.")
+        except NoSuchElementException:
+            print("Image element not found on the website.")
+
+
+    def how_it_works_verify_element_es(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.HOW_IT_WORKS).click()
+        self.element_is_visible(self.locators.HOMEPAGE_LANGUAGE).click()
+        self.element_is_visible(self.locators.HOMEPAGE_LANGUAGE_SPANISH).click()
+        text = self.element_is_visible(self.locators.HOW_IT_WORKS_TITLE)
+        expected_title = "Cómo funciona"
+        assert text.text == expected_title
+        text_two = self.element_is_visible(self.locators.PROGRESS_REPORTS_ES)
+        expected_message = "Cada cuenta de niño incluye varios reportes de progreso como tiempo, actividad, evaluación y reporte diario."
+        assert text_two.text == expected_message
+        text_combination = self.element_is_visible(self.locators.DEVICES_ES)
+        expected_message_two = "Dispositivos"
+        assert text_combination.text == expected_message_two
+        print("How it works page works good")
+
+
+   #  ---------
+
+    def customer_reviews_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.CUSTOMER_REVIEWS_TITLE)
+        print(text.text)
+        expected_title = "Opiniones de Clientes"
+        assert text.text == expected_title
+        time.sleep(2)
+        self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK_ES).click()
+        time.sleep(2)
+        self.element_is_visible(self.locators.CUSTOMER_REVIEWS_VIDEO_CLICK_ES).click()
+        time.sleep(2)
+        if self.driver.get_window_rect()['width'] == self.driver.execute_script('return window.screen.width') and \
+                self.driver.get_window_rect()['height'] == self.driver.execute_script('return window.screen.height'):
+            print("Video is in full screen mode.")
+        else:
+            print("Video is not in full screen mode.")
+
+    def language_courses_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "50 idiomas y más de 30,000 actividades en línea"
+        assert text.text == expected_title
+        self.scroll_down()
+        time.sleep(3)
+        text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_ES)
+        expected_title_three = "Por favor califique esta página"
+        assert text_three.text == expected_title_three
+        print("The webpage working as expected")
+
+
+
+    def curriculum_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Programa de Estudio"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.CURRICULUM__ACCOUNT_EN).click()
+        text_two = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title_two = "Cree Su Cuenta Gratuita"
+        assert text_two.text == expected_title_two
+        self.back()
+        self.scroll_down()
+        text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_ES)
+        expected_title_three = "Por favor califique esta página"
+        assert text_three.text == expected_title_three
+        print("Redirecting to create account works as expected")
+
+
+    def parents_guide_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Consejos para padres"
+        assert text.text == expected_title
+        text_two = self.element_is_visible(self.locators.PARENTS_GUIDE_TEXT_ES)
+        expected_text = "La consistencia es la clave. Es importante recordar iniciar sesión y practicar una vez al día."
+        assert text_two.text == expected_text
+        self.element_is_visible(self.locators.TRY_IT_FOR_FREE_ES).click()
+        text_two = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title_two = "Cree Su Cuenta Gratuita"
+        assert text_two.text == expected_title_two
+        print("The parents guide website working as expected. Try it for free redirects to the account creation")
+
+
+    def schools_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Dinolingo para Escuelas"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.SCHOOLS_GET_A_QUOTE_EN).click()
+        window_handles = self.driver.window_handles
+        if len(window_handles) > 1:
+            # Switch to the new window
+            self.driver.switch_to.window(window_handles[-1])
+            text_two = self.element_is_visible(self.locators.SCHOOLS_QUOTE_FORMULARIO_EN)
+            expected_text = "School Quote"
+            assert text_two.text == expected_text
+            self.driver.close()
+            self.driver.switch_to.window(window_handles[0])
+        else:
+            print("The School Quote window not open")
+        self.scroll_down()
+        text_three = self.element_is_visible(self.locators.SCHOOLS_QUOTE_SCHOOLS_TEXT_ES)
+        expected_text_three = "Trabajamos con escuelas públicas, escuelas subvencionadas, escuelas privadas, tutores de idiomas, gobiernos e instituciones."
+        assert text_three.text == expected_text_three
+        image = self.element_is_visible(self.locators.SCHOOLS_IMAGE_EN)
+        assert image.is_displayed(), "Image is not displayed on the page"
+        print("Schools page working as expected. Users can open Schools Quote ")
+
+    def homeschoolers_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Educación en el Hogar"
+        assert text.text == expected_title
+        text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_ES)
+        expected_title_three = "Por favor califique esta página"
+        assert text_three.text == expected_title_three
+        print("The webpage working as expected")
+
+
+    def privacy_verify_redirect_es(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.PRIVACY_ES).click()
+        window_handles = self.driver.window_handles
+        if len(window_handles) > 1:
+            # Switch to the new window
+            self.driver.switch_to.window(window_handles[-1])
+            text_two = self.element_is_visible(self.locators.NEW_PAGE_HEADER)
+            expected_text = "Dinolingo Privacy Policy"
+            assert text_two.text == expected_text
+            self.driver.close()
+            self.driver.switch_to.window(window_handles[0])
+
+    def terms_verify_redirect_es(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.TERMS_ES).click()
+        window_handles = self.driver.window_handles
+        if len(window_handles) > 1:
+            # Switch to the new window
+            self.driver.switch_to.window(window_handles[-1])
+            text = self.element_is_visible(self.locators.NEW_PAGE_HEADER)
+            expected_text = "Terms & Conditions"
+            assert text.text == expected_text
+            self.driver.close()
+            self.driver.switch_to.window(window_handles[0])
+
+    def contact_us_verify_redirect_es(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.CONTACT_US_ES).click()
+        window_handles = self.driver.window_handles
+        if len(window_handles) > 1:
+            # Switch to the new window
+            self.driver.switch_to.window(window_handles[-1])
+            text = self.element_is_visible(self.locators.CONTACT_US_HEADER)
+            expected_text = "Dinolingo Help and Support"
+            assert text.text == expected_text
+            self.driver.close()
+            self.driver.switch_to.window(window_handles[0])
+
+    def about_us_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Acerca de Dinolingo"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.ABOUT_US_CREATE_ACCOUNT_ES).click()
+        text_two = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title_two = "Cree Su Cuenta Gratuita"
+        assert text_two.text == expected_title_two
+        self.back()
+        self.scroll_down()
+        text_three = self.element_is_visible(self.locators.LANGUAGE_COURSES_RATE_THIS_PAGE_ES)
+        expected_title_three = "Por favor califique esta página"
+        assert text_three.text == expected_title_three
+        print("Redirecting to create account works as expected")
+
+
+    def help_and_support_verify_redirect_es(self):
+        self.scroll_down()
+        self.scroll_down()
+        self.element_is_visible(self.locators.HELP_AND_SUPPORT_ES).click()
+        window_handles = self.driver.window_handles
+        if len(window_handles) > 1:
+            # Switch to the new window
+            self.driver.switch_to.window(window_handles[-1])
+            text = self.element_is_visible(self.locators.CONTACT_US_HEADER)
+            expected_text = "Dinolingo Help and Support"
+            assert text.text == expected_text
+            self.driver.close()
+            self.driver.switch_to.window(window_handles[0])
+
+    def spanish_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Español para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+
+    def french_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Francés para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+
+    def english_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Inglés para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+
+    def italian_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Italiano para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+
+    def german_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Alemán para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def japanese_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Japonés para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def portuguese_eu_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Portugués para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def russian_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Ruso para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def chinese_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Chino para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def greek_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Griego para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def swedish_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Sueco para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def dutch_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Holandés para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def polish_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Polaco para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def arabic_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Árabe para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def hebrew_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Hebreo para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def ukrainian_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Ucraniano para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def latin_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Latín para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def korean_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Coreano para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def hindi_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Hindi para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def persian_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Persa para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def croatian_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Croata para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+
+    def turkish_for_kids_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "Aprendizaje Turco para Niños"
+        assert text.text == expected_title
+        self.element_is_visible(self.locators.VIDEO_PLAY).click()
+        video = self.element_is_visible(self.locators.VIDEO_PLAY)
+        self.driver.execute_script("arguments[0].play();", video)
+        try:
+            WebDriverWait(self.driver, 10).until(
+                EC.invisibility_of_element_located((By.XPATH, "//div[@class='your-video-playback-overlay']"))
+            )
+            print("Video is playing.")
+        except TimeoutException:
+            print("Video did not start playing within the expected time.")
+
+    def all_languages_verify_elements_es(self):
+        text = self.element_is_visible(self.locators.ALL_TITLES)
+        expected_title = "50 idiomas y más de 30,000 actividades en línea"
         assert text.text == expected_title

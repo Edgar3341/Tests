@@ -184,6 +184,12 @@ def test_hebrew_for_kids(driver):
     hebrew.hebrew_for_kids_verify_elements()
 
 
+@allure.title("Ukrainian for kids. Verify all elements / Video playing")
+def test_ukrainian_for_kids(driver):
+    language = EnglishLanding(driver, "https://dinolingo.com/")
+    language.open()
+    language.ukrainian_for_kids_verify_elements()
+
 @allure.title("Latin for kids. Verify all elements / Video playing")
 def test_latin_for_kids(driver):
     language = EnglishLanding(driver, "https://dinolingo.com/")

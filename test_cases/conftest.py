@@ -3,11 +3,13 @@ from datetime import datetime
 
 import allure
 import pytest
+import self
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-
+from locators.locators_english_language import PageLocators
+from base.base_page import BasePage
 
 
 

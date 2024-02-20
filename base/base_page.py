@@ -71,7 +71,7 @@ class BasePage:
     # Click on a random location on the page
     def random_click(self):
         actions = ActionChains(self.driver)
-        actions.move_by_offset(500, 500)
+        actions.move_by_offset(800, 500)
         actions.click()
         actions.perform()
 
