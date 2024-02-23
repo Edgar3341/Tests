@@ -15,18 +15,26 @@ class PageLocators:
     PARENTS_GUIDE = (By.XPATH, "//a[contains(text(),'Parents guide')]")
     SCHOOLS = (By.XPATH, "//a[contains(text(),'Schools')]")
     HOMESCHOOLES = (By.XPATH, "//a[contains(text(),'Homeschoolers')]")
+
     PRIVACY_EN = (By.XPATH, "//a[contains(text(),'Privacy')]")
     PRIVACY_ES = (By.XPATH, "//a[contains(text(),'Privacidad')]")
+    PRIVACY_FR = (By.XPATH, "//a[contains(text(),'Confidentialité')]")
+
     TERMS_EN = (By.XPATH, "//a[contains(text(),'Terms')]")
     TERMS_ES = (By.XPATH, "//a[contains(text(),'Términos')]")
     TERMS_IT = (By.XPATH, "//a[contains(text(),'Termini')]")
+    TERMS_FR = (By.XPATH, "//a[contains(text(),'Conditions')]")
+
     CONTACT_US_EN = (By.XPATH, "//a[contains(text(),'Contact Us')]")
     CONTACT_US_ES = (By.XPATH, "//a[contains(text(),'Contáctenos')]")
     CONTACT_US_IT = (By.XPATH, "//a[contains(text(),'Contatti ')]")
+    CONTACT_US_FR = (By.XPATH, "//a[contains(text(),'Nous contacter')]")
+
     ABOUT_US = (By.XPATH, "//a[contains(text(),'About Us')]")
     HELP_AND_SUPPORT_EN = (By.XPATH, "//a[contains(text(),'Help & Support')]")
     HELP_AND_SUPPORT_ES = (By.XPATH, "//a[contains(text(),'Ayuda y Soporte')]")
     HELP_AND_SUPPORT_IT = (By.XPATH, "//a[contains(text(),'Aiuto e supporto')]")
+    HELP_AND_SUPPORT_FR = (By.XPATH, "//a[contains(text(),'À propos de nous')]")
 
     # SECOND TAB FOOTER
     SPANISH_FOR_KIDS = (By.XPATH, "//a[contains(text(),'Spanish for kids')]")
@@ -62,6 +70,7 @@ class PageLocators:
     BEST_METHODS_TO_EACH_CHILDREN_EN = (By.XPATH, "//h2[contains(text(),'Best 10 methods to teach children a second languag')]")
     BEST_METHODS_TO_EACH_CHILDREN_ES = (By.XPATH, "//h2[contains(text(),'Los mejores 10 métodos para enseñar un segundo idioma a niños')]")
     BEST_METHODS_TO_EACH_CHILDREN_IT = (By.XPATH, "//h2[contains(text(),'I 10 migliori metodi per insegnare una seconda lin')]")
+    BEST_METHODS_TO_EACH_CHILDREN_FR = (By.XPATH, "//h2[contains(text(),'Les 10 meilleures méthodes pour enseigner une seconde langue aux enfants')]")
     HOMEPAGE_IMAGE = (By.XPATH, "//div[@class='image']/img")
     HOMEPAGE_LANGUAGE = (By.XPATH, "//header/div[1]/div[2]/div[1]/div[2]")
     HOMEPAGE_LANGUAGE_SPANISH = (By.XPATH, "//span[contains(text(),'Español')]")
@@ -72,9 +81,12 @@ class PageLocators:
     PROGRESS_REPORTS_EN = (By.XPATH, "//p[contains(text(),'Each child account includes several progress repor')]")
     PROGRESS_REPORTS_ES = (By.XPATH, "//p[contains(text(),'Cada cuenta de niño incluye varios reportes de pro')]")
     PROGRESS_REPORTS_iT = (By.XPATH, "//p[contains(text(),'Ogni account per bambini include diverse relazioni')]")
+    PROGRESS_REPORTS_FR = (By.XPATH, "//p[contains(text(),'Chaque compte enfant est composé de plusieurs rapp')]")
 
     DEVICES_ES = (By.XPATH, "//h4[contains(text(),'Dispositivos')]")
     DEVICES_IT = (By.XPATH, "//h4[contains(text(),'Dispositivi')]")
+    DEVICES_FR = (By.XPATH, "//h4[contains(text(),'Devices')]")
+
     RECENT_COMBINATION_ES = (By.XPATH, "//p[contains(text(),'Recent studies have shown that children prefer to ')]")
 
     # CUSTOMER REVIEW
@@ -82,6 +94,7 @@ class PageLocators:
     CUSTOMER_REVIEWS_VIDEO = (By.XPATH, "//div[@class='slideBlock fades']//iframe")
     CUSTOMER_REVIEWS_VIDEO_CLICK_EN = (By.XPATH, "//body/app-root[1]/ng-component[1]/ng-component[1]/div[1]/section[3]/article[1]/div[1]")
     CUSTOMER_REVIEWS_VIDEO_CLICK_ES = (By.XPATH, "//body/app-root[1]/ng-component[1]/ng-component[1]/div[1]/section[3]/article[1]")
+
     CUSTOMER_REVIEWS_VIDEO_PLAYING = (By.CSS_SELECTOR, "video")
 
     # LANGUAGE COURSES
@@ -89,6 +102,8 @@ class PageLocators:
     LANGUAGE_COURSES_RATE_THIS_PAGE_EN = (By.XPATH, "//div[contains(text(),'Please rate this page')]")
     LANGUAGE_COURSES_RATE_THIS_PAGE_ES = (By.XPATH, "//div[contains(text(),'Por favor califique esta página')]")
     LANGUAGE_COURSES_RATE_THIS_PAGE_IT = (By.XPATH, "//div[contains(text(),'Valuta questa pagina')]")
+    LANGUAGE_COURSES_RATE_THIS_PAGE_FR = (By.XPATH, "//div[contains(text(),'Merci')]")
+
     LANGUAGE_COURSES_RATE_THIS_PAGE_IT_AI = (By.XPATH, "//div[contains(text(),'Hai valutato questa pagina per  5 stelle')]")
 
     # CURRICULUM
@@ -100,6 +115,7 @@ class PageLocators:
     PARENTS_GUIDE_TEXT_EN = (By.XPATH, "//p[contains(text(),'Consistency is the key. It is important to remembe')]")
     PARENTS_GUIDE_TEXT_ES = (By.XPATH, "//p[contains(text(),'La consistencia es la clave. Es importante recorda')]")
     PARENTS_GUIDE_TEXT_IT = (By.XPATH, "//p[contains(text(),'La costanza è fondamentale. È importante ricordarsi di accedere ed esercitarsi una volta al giorno.')]")
+    PARENTS_GUIDE_TEXT_FR = (By.XPATH, "//p[contains(text(),'La persévérance est la clé. Il est important de ga')]")
 
     TRY_IT_FOR_FREE_ES = (By.XPATH, "//body/app-root[1]/ng-component[1]/ng-component[1]/div[1]/section[1]/article[1]/div[1]/div[1]/button[1]/a[1]")
 
@@ -113,6 +129,8 @@ class PageLocators:
     SCHOOLS_QUOTE_SCHOOLS_TEXT_EN = (By.XPATH, "//p[contains(text(),'We work with public schools, charter schools, lang')]")
     SCHOOLS_QUOTE_SCHOOLS_TEXT_ES = (By.XPATH, "//p[contains(text(),'Trabajamos con escuelas públicas, escuelas subvenc')]")
     SCHOOLS_QUOTE_SCHOOLS_TEXT_IT = (By.XPATH, "//p[contains(text(),'Lavoriamo con scuole pubbliche, charter school, sc')]")
+    SCHOOLS_QUOTE_SCHOOLS_TEXT_FR = (By.XPATH, "//p[contains(text(),'Le service')]")
+
     SCHOOLS_IMAGE_EN = (By.XPATH, "//div[@class='servicesBlock']//img[@src='assets/pictures/customers.jpg']")
 
 

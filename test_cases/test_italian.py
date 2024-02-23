@@ -74,7 +74,7 @@ def test_contact_us_italian(driver):
 
 @allure.title("About us. Redirect to the new window")
 def test_about_us_italian(driver):
-    contact_us = ItalianLanding(driver, "https://dinolingo.com/es/about-us")
+    contact_us = ItalianLanding(driver, "https://dinolingo.com/it/about-us")
     contact_us.open()
     contact_us.about_us_verify_elements_it()
 
