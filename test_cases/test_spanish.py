@@ -4,7 +4,7 @@ import allure
 
 @allure.title("Test open the Website in Spanish language ")
 def test_open_website_spanish(driver):
-    checking = SpanishLanding(driver, "https://dinolingo.com/")
+    checking = SpanishLanding(driver, "https://dinolingo.com/es")
     checking.open()
     checking.verify_elements_on_homepage_es()
 
