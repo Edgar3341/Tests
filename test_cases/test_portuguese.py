@@ -174,7 +174,7 @@ def test_arabic_for_kids_portuguese(driver):
     arabic.arabic_for_kids_verify_elements_pt()
 
 @allure.title("Hebrew for kids. Verify all elements / Video playing")
-def test_hebrew_for_kids_german(driver):
+def test_hebrew_for_kids_portuguese(driver):
     hebrew = PortugueseLanding(driver, "https://dinolingo.com/pt/learn-hebrew-for-kids")
     hebrew.open()
     hebrew.hebrew_for_kids_verify_elements_pt()
@@ -226,10 +226,6 @@ def test_all_languages_for_kids_portuguese(driver):
     language = PortugueseLanding(driver, "https://dinolingo.com/pt/language-courses")
     language.open()
     language.all_languages_verify_elements_pt()
-
-
-
-
 
 
 
